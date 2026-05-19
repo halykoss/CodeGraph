@@ -1,0 +1,50 @@
+Bootstrap: docker
+From: vllm/vllm-openai:latest
+
+%labels
+    Description Distributed semantic graph construction with Ray + vLLM
+    vLLM_Version latest with Qwen3 MoE support
+
+%post
+    # vLLM is already installed in the base image with the required CUDA kernels.
+
+    pip install --no-cache-dir --upgrade pip
+
+    # Ray pinned to a stable version for multi-node execution.
+    pip install --no-cache-dir "ray[default]==2.38.0"
+
+    # Project dependencies.
+    pip install --no-cache-dir \
+        networkx>=2.8.0 \
+        boto3>=1.28.0 \
+        botocore>=1.31.0 \
+        pandas>=2.0.0 \
+        tqdm>=4.65.0 \
+        numpy>=1.21.0 \
+        transformers \
+        datasets \
+        accelerate \
+        sentencepiece \
+        protobuf
+
+    pip cache purge
+
+%environment
+    export PYTHONUNBUFFERED=1
+    # NCCL settings for InfiniBand networks.
+    export NCCL_DEBUG=WARN
+    export NCCL_IB_HCA=mlx5
+    export NCCL_IB_TIMEOUT=22
+    export NCCL_SOCKET_IFNAME=ib0
+    # Ray temporary directory.
+    export RAY_TMPDIR=/tmp/ray
+
+%runscript
+    exec python3 "$@"
+
+%help
+    Container for distributed semantic graph construction.
+    Uses Ray for orchestration and vLLM for LLM inference on GPUs.
+
+    Build:
+        singularity build --fakeroot hpc/containers/graph-codebase.sif hpc/singularity.def
