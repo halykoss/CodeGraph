@@ -1,4 +1,4 @@
-# CodeGraph Reproducibility Package
+# CodeGraph
 
 CodeGraph builds a semantic dataset from source files. The current pipeline has
 four stages:
