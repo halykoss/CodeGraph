@@ -42,7 +42,7 @@ CACHE_DIRS = (
 WIKIDATA_SPARQL = "https://query.wikidata.org/sparql"
 HEADERS = {
     "Accept": "application/sparql-results+json",
-    "User-Agent": "CodeGraphEmbeddingDataset/1.0 (anonymous research package)",
+    "User-Agent": "CodeGraphEmbeddingDataset/1.0 (https://github.com/halykoss/CodeGraph)",
 }
 
 MAX_PARENTS  = 3

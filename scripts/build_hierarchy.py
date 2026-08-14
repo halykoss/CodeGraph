@@ -38,7 +38,7 @@ import requests
 WIKIDATA_SPARQL = "https://query.wikidata.org/sparql"
 HEADERS = {
     "Accept": "application/sparql-results+json",
-    "User-Agent": "CodeGraphEmbeddingDataset/1.0 (anonymous research package)",
+    "User-Agent": "CodeGraphEmbeddingDataset/1.0 (https://github.com/halykoss/CodeGraph)",
 }
 
 L1_FILE    = "wikidata_parents.json"   # output from fetch_wikidata_parents.py

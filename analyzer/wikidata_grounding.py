@@ -51,7 +51,7 @@ OPENROUTER_URL = "https://openrouter.ai/api/v1/chat/completions"
 VLLM_DEFAULT_URL = "http://localhost:8000/v1"
 WIKIDATA_USER_AGENT = os.getenv(
     "WIKIDATA_USER_AGENT",
-    "CodeGraphWikidataGrounder/1.0 (anonymous research package)",
+    "CodeGraphWikidataGrounder/1.0 (https://github.com/halykoss/CodeGraph)",
 )
 
 
